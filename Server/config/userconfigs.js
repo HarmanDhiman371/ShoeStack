@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "hind2525", 
+    password: "Brookyln@99", 
     database: "userdata",
 });
 db.connect((err) => {
@@ -42,3 +42,4 @@ app.listen(port,()=>
 {
     console.log("server running")
 })
+module.exports = db;
