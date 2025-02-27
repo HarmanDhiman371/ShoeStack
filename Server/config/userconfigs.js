@@ -38,6 +38,33 @@ app.post('/submit', (req, res) => {
     });
   });
   
+  app.post('/signup', (req, res) => {
+    const { name, email, pass } = req.body;
+
+    // Check if  email already exists
+    const checkUserQuery = 'SELECT * FROM user WHERE  email = ?';
+    db.query(checkUserQuery, [email], (err, results) => {
+        if (err) {
+            console.error('Error checking for existing user:', err);
+            return res.status(500).send('An error occurred.');
+        }
+
+        if (results.length > 0) {
+            // User with the same name or email already exists
+            return res.status(400).send('User with this name or email already exists.');
+        } else {
+            // Insert new user into the database
+            const insertUserQuery = 'INSERT INTO user (name, email, pass) VALUES (?, ?, ?)';
+            db.query(insertUserQuery, [name, email, pass], (err, result) => {
+                if (err) {
+                    console.error('Error inserting new user:', err);
+                    return res.status(500).send('An error occurred.');
+                }
+                res.status(201).send('User registered successfully!');
+            });
+        }
+    });
+});
 app.listen(port,()=>
 {
     console.log("server running")
