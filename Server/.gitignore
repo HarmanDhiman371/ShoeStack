@@ -35,6 +35,4 @@ build/
 .idea/
 *.iml
 
-# Git
-.git/
-.gitignore
+
