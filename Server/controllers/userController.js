@@ -38,3 +38,29 @@ exports.signupUser = (req, res) => {
     });
   });
 };
+exports.loginUser = (req, res) => {
+    const { email, pass } = req.body;
+  
+    if (!email || !pass) {
+      return res.status(400).send("Email and password are required.");
+    }
+  
+    User.findByEmail(email, (err, results) => {
+      if (err) {
+        console.error("Error checking user:", err);
+        return res.status(500).send("An error occurred.");
+      }
+  
+      if (results.length === 0) {
+        return res.status(404).send("User not found.");
+      }
+  
+      // Check if password matches
+      if (results[0].pass !== pass) {
+        return res.status(401).send("Incorrect password.");
+      }
+  
+      res.status(200).send("Login successful!");
+    });
+  };
+  
