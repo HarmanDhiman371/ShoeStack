@@ -1,52 +1,53 @@
 const stripe = require('../config/stripe');
+
+// Create a PaymentIntent
 const createPaymentIntent = async (req, res) => {
-  const { amount, currency } = req.body; 
+  const { amount, currency } = req.body;
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount, 
-      currency, 
+      amount,
+      currency,
       payment_method_types: ['card'],
     });
 
-
-    console.log(paymentIntent);
+    console.log('PaymentIntent created:', paymentIntent.id);
 
     res.status(200).json({
       clientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id, // Include the PaymentIntent ID
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-
-
-
-
-
-
-
-
-// Handle Charge Payment (After the token is sent from frontend)
+// Confirm a PaymentIntent
 const chargePayment = async (req, res) => {
-  const { token, clientSecret, name } = req.body; // Get token, clientSecret, and name from request body
+  const { paymentIntentId } = req.body; // Use paymentIntentId to confirm the payment
 
   try {
-    // Confirm the paymentIntent using the received clientSecret and payment method (token)
-    const paymentIntent = await stripe.paymentIntents.confirm(clientSecret, {
-      payment_method: token.id,  // Use the token's id for payment confirmation
+    // Step 1: Create a PaymentMethod using the test token
+    const paymentMethod = await stripe.paymentMethods.create({
+      type: 'card',
+      card: {
+        token: 'tok_visa', // Use the test token
+      },
     });
 
-    // Handle successful payment
-    if (paymentIntent.status === 'succeeded') {
-      console.log('Payment succeeded:', paymentIntent);
+    console.log('PaymentMethod created:', paymentMethod.id);
 
+    // Step 2: Confirm the PaymentIntent with the PaymentMethod ID
+    const paymentIntent = await stripe.paymentIntents.confirm(paymentIntentId, {
+      payment_method: paymentMethod.id, // Use the PaymentMethod ID
+    });
+
+    if (paymentIntent.status === 'succeeded') {
+      console.log('Payment succeeded:', paymentIntent.id);
       res.status(200).json({
         success: true,
         message: 'Payment completed successfully!',
       });
     } else {
-      // Payment failed
       res.status(400).json({
         success: false,
         message: 'Payment failed.',
@@ -61,18 +62,10 @@ const chargePayment = async (req, res) => {
   }
 };
 
-
-
-
-
-
-
-
-
-// Handle Webhooks (optional for event handling)
+// Handle Stripe Webhooks
 const handleWebhook = (req, res) => {
   const sig = req.headers['stripe-signature'];
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET; // Set this from Stripe Dashboard
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event;
 
   try {
@@ -80,7 +73,7 @@ const handleWebhook = (req, res) => {
 
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object;
-      console.log('Payment succeeded:', paymentIntent);
+      console.log('Webhook: Payment succeeded:', paymentIntent.id);
     }
 
     res.json({ received: true });
@@ -89,6 +82,5 @@ const handleWebhook = (req, res) => {
     res.status(400).send(`Webhook Error: ${err.message}`);
   }
 };
-
 
 module.exports = { createPaymentIntent, chargePayment, handleWebhook };
