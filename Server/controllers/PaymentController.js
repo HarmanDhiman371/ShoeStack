@@ -1,6 +1,4 @@
 const stripe = require('../config/stripe');
-
-// Create a PaymentIntent
 const createPaymentIntent = async (req, res) => {
   const { amount, currency } = req.body;
 
@@ -38,7 +36,7 @@ const chargePayment = async (req, res) => {
 
     // Step 2: Confirm the PaymentIntent with the PaymentMethod ID
     const paymentIntent = await stripe.paymentIntents.confirm(paymentIntentId, {
-      payment_method: paymentMethod.id, // Use the PaymentMethod ID
+      payment_method: paymentMethod.id, 
     });
 
     if (paymentIntent.status === 'succeeded') {
@@ -62,7 +60,6 @@ const chargePayment = async (req, res) => {
   }
 };
 
-// Handle Stripe Webhooks
 const handleWebhook = (req, res) => {
   const sig = req.headers['stripe-signature'];
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
