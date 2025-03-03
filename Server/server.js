@@ -1,5 +1,6 @@
 // require("dotenv").config();
 require('dotenv').config();
+const stripe = require('stripe')
 
 const express = require("express");
 const orderRoutes = require("./routes/orderRoutes");
