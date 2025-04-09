@@ -1,0 +1,92 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .navbar-logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: #00bcd4;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-logo:hover {
+    transform: scale(1.1);
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-menu li a {
+    position: relative;
+    color: #0097a7;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 6px 10px;
+    transition: all 0.4s ease;
+  }
+  
+  .navbar-menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #00bcd4;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-menu li a:hover::after {
+    width: 100%;
+  }
+  
+  .navbar-menu li a:hover {
+    color: #00bcd4;
+    text-shadow: 0 0 5px rgba(0, 188, 212, 0.6);
+  }
+  
+  .navbar-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+  }
+  
+  .navbar-btn:hover {
+    background: linear-gradient(135deg, #0097a7, #00bcd4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.5);
+  }
+  
