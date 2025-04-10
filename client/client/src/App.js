@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 // import Profile from "./pages/Profile";
 import PaymentForm from "./components/PaymentForm";
 import CartPage from "./components/Cart";
-import ProductPage from "./components/ProductPage";
+import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 
 function App() {
@@ -19,12 +19,12 @@ function App() {
         <main>
           <Routes>
             {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/products" element={<ProductPage />} />
+            <Route path="/products" element={<ProductsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/payment" element={<PaymentForm />} />
           </Routes>
         </main>
-        <Footer />
+        
       </Router>
     </CartProvider>
   );

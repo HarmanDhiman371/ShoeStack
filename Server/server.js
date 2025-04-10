@@ -1,10 +1,7 @@
 // require("dotenv").config();
 require('dotenv').config();
-<<<<<<< HEAD
 const cors = require('cors');
-=======
 const stripe = require('stripe')
->>>>>>> origin/main
 
 const express = require("express");
 const orderRoutes = require("./routes/orderRoutes");
@@ -13,12 +10,9 @@ const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 
 const app = express();
-<<<<<<< HEAD
 app.use(express.json());
 app.use(cors());
-=======
 const cors = require('cors');
->>>>>>> origin/main
 
 app.use(express.json());
 app.use(cors({
