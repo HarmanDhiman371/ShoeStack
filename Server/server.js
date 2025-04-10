@@ -1,5 +1,6 @@
 // require("dotenv").config();
 require('dotenv').config();
+const cors = require('cors');
 const stripe = require('stripe')
 
 const express = require("express");
@@ -9,6 +10,8 @@ const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 const cors = require('cors');
 
 app.use(express.json());
