@@ -7,25 +7,26 @@ import Footer from "./components/Footer";
 // import Cart from "./pages/Cart";
 // import Profile from "./pages/Profile";
 import PaymentForm from "./components/PaymentForm";
+import CartPage from "./components/Cart";
+import ProductPage from "./components/ProductPage";
+import { CartProvider } from './components/CartContext';
+
 function App() {
-  // return (
-  //   <Router>
-  //     <Navbar />
-  //     {/* <main>
-  //       <Routes>
-  //         <Route path="/" element={<Home />} />
-  //         <Route path="/products" element={<Products />} />
-  //         <Route path="/cart" element={<Cart />} />
-  //         <Route path="/profile" element={<Profile />} />
-  //       </Routes>
-  //     </main> */}
-  //     <Footer />
-  //   </Router>
-  // );
   return (
-    <div>
-      <Navbar />
-    </div>
+    <CartProvider>
+      <Router>
+        <Navbar />
+        <main>
+          <Routes>
+            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/products" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/payment" element={<PaymentForm />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </CartProvider>
   );
 }
 

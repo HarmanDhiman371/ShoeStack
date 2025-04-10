@@ -1,0 +1,112 @@
+.cart-container {
+    max-width: 600px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 30px auto 80px; /* Add bottom margin to avoid overlapping footer */
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+  }
+  
+  .item-details h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #222;
+  }
+  
+  .item-details p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .item-quantity button {
+    background-color: #f8b400;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .item-quantity button:hover {
+    background-color: #d99800;
+  }
+  
+  .item-quantity span {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .total {
+    text-align: right;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+  }
+  .cart-item p {
+    margin: 4px 0;
+  }
+  
+  .remove-btn {
+    background-color: #ff4d4d;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .remove-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  .empty-cart {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+  }
+  .remove-btn {
+    background-color: #e74c3c;
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.2s ease;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c0392b;
+  }
+    
+  
