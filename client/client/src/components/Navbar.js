@@ -2,61 +2,55 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import styled from "styled-components";
-
+import { useCart } from "./CartContext"; // Make sure the path is correct
+import './Navbar.css';
 const Navbar = () => {
+  const { cartItems } = useCart();
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
-    <NavContainer>
-      <div className="logo">
-        <Link to="/">E-Shop</Link>
-      </div>
-      <ul className="nav-links">
+
+      // <div className="logo">
+      //   <Link to="/">ShoeStack</Link>
+      // </div>
+
+      // <ul className="nav-links">
+      //   <li><Link to="/">Home</Link></li>
+      //   <li><Link to="/products">Products</Link></li>
+      //   <li><Link to="/accessories">Accessories</Link></li>
+      //   <li><Link to="/about">About</Link></li>
+      //   <li><Link to="/cart" className="cart-link">
+      //     <FaShoppingCart />
+      //     Cart
+      //     {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+      //   </Link></li>
+      //   <li><Link to="/profile"><FaUser /> Profile</Link></li>
+      // </ul>
+
+      // <button className="navbar-btn">Get Started</button>
+      <nav className="navbar">
+      <div className="navbar-logo">ShoeStack</div>
+      <div className="navbar-right">
+        <ul className="navbar-menu">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/products">Products</Link></li>
-        <li><Link to="/cart"><FaShoppingCart /> Cart</Link></li>
-        <li><Link to="/profile"><FaUser /> Profile</Link></li>
-      </ul>
-    </NavContainer>
+        <li><Link to="/accessories">Accessories</Link></li>
+        <li><Link to="/about">About</Link></li>
+
+          <li>
+            <Link to="/cart" className="cart-link">
+              <FaShoppingCart />
+              {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+            </Link>
+          </li>
+        </ul>
+        <button className="navbar-btn">Get Started</button>
+      </div>
+    </nav>
+
   );
 };
 
 export default Navbar;
 
-const NavContainer = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: #222;
-  color: #fff;
 
-  .logo a {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-
-  .nav-links li {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .nav-links a:hover {
-    color: #f8b400;
-  }
-`;
