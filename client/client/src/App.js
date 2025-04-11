@@ -10,7 +10,7 @@ import PaymentForm from "./components/PaymentForm";
 import CartPage from "./components/Cart";
 import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
-
+import Body from "./pages/Body";
 function App() {
   return (
     <CartProvider>
@@ -24,7 +24,7 @@ function App() {
             <Route path="/payment" element={<PaymentForm />} />
           </Routes>
         </main>
-        
+        <Body />
       </Router>
     </CartProvider>
   );

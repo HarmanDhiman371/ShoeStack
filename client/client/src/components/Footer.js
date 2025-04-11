@@ -1,43 +1,39 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import '../styles/Footer.css'; // Ensure you have the correct path to your CSS file
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <p>&copy; {new Date().getFullYear()} E-Shop. All Rights Reserved.</p>
-      <ul>
-        <li><a href="/terms">Terms & Conditions</a></li>
-        <li><a href="/privacy">Privacy Policy</a></li>
-      </ul>
-    </FooterContainer>
+    <footer className="site-footer">
+      <div className="footer-container">
+        <div className="footer-about">
+          <h2>StepUp Shoes</h2>
+          <p>Where comfort meets style. Discover top-quality footwear crafted for every step of your journey.</p>
+        </div>
+
+        <div className="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: hello@stepupshoes.com</p>
+          <p>Phone: +1 234 567 890</p>
+          <p>Address: 123 Fashion Street, NY</p>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <p>&copy; 2025 StepUp Shoes. All rights reserved.</p>
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-
-const FooterContainer = styled.footer`
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-  }
-
-  ul li a {
-    color: #f8b400;
-    text-decoration: none;
-  }
-
-  ul li a:hover {
-    text-decoration: underline;
-  }
-`;
