@@ -12,7 +12,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const app = express();
 app.use(express.json());
 app.use(cors());
-const cors = require('cors');
+
 
 app.use(express.json());
 app.use(cors({
