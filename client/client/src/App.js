@@ -11,6 +11,7 @@ import CartPage from "./components/Cart";
 import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
+
 function App() {
   return (
     <CartProvider>
@@ -25,6 +26,7 @@ function App() {
           </Routes>
         </main>
         <Body />
+        <Footer/>
       </Router>
     </CartProvider>
   );
