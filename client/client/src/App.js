@@ -7,7 +7,10 @@ import CartPage from "./components/Cart";
 import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
+
 import LoginPage from "./pages/loginpage"; 
+=======
+
 
 function App() {
   return (
@@ -21,8 +24,14 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/payment" element={<PaymentForm />} />
           </Routes>
-        </main>
-        <Footer />
+</main>
+        
+
+  
+
+        <Body />
+        <Footer/>
+
       </Router>
     </CartProvider>
   );
