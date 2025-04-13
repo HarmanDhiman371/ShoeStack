@@ -23,8 +23,7 @@ const ProductPage = () => {
           <p>Price: ₹{product.price}</p>
           <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
         </div>
-      ))}
-    </div>
+      ))}    </div>
   );
 };
 

@@ -11,25 +11,32 @@ import CartPage from "./components/Cart";
 import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
+import CheckoutPage from "./components/CheckoutPage";
 
 function App() {
   return (
     <CartProvider>
       <Router>
-        <Navbar />
-        <main>
-          <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/payment" element={<PaymentForm />} />
-          </Routes>
-        </main>
-        <Body />
-        <Footer/>
-      </Router>
+  <Navbar />
+  <main>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <Body />
+          <Footer />
+        </>
+      } />
+      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/payment" element={<PaymentForm />} />
+    </Routes>
+  </main>
+</Router>
+
     </CartProvider>
   );
+  
 }
 
 export default App;
