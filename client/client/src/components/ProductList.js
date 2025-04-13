@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useCart } from './CartContext';
 import "../styles/ProductList.css";
 
 const ProductList = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const handleBuyNowClick = (product) => {
     setSelectedProduct(product);
@@ -25,7 +27,17 @@ const ProductList = ({ products }) => {
       quantity
     });
 
-    // Reset
+    const productToAdd = {
+      id: selectedProduct.id,
+      product: selectedProduct.name,
+      size: selectedSize,
+      quantity,
+      price: selectedProduct.price, 
+      imageUrl: selectedProduct.imageUrl,
+    };
+    addToCart(productToAdd);
+
+    // Reset selection
     setSelectedProduct(null);
   };
 

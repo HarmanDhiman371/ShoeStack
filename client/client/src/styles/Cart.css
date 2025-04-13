@@ -1,15 +1,17 @@
 .cart-container {
-    max-width: 600px;
-    max-height: 300px;
+    max-width: 700px;
+    max-height: 800px;
     overflow-y: auto;
     margin: 30px auto 80px; /* Add bottom margin to avoid overlapping footer */
     padding: 25px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
   }
   
   .cart-container h2 {
+    margin-top: 60px;
     text-align: center;
     margin-bottom: 25px;
     font-size: 24px;
@@ -42,19 +44,22 @@
   }
   
   .item-quantity button {
-    background-color: #f8b400;
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
     border: none;
-    padding: 5px 10px;
+    padding: 7px 12px;
     font-size: 16px;
     font-weight: bold;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
   }
   
   .item-quantity button:hover {
-    background-color: #d99800;
+    background: linear-gradient(135deg, #0097a7, #00bcd4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.5);
   }
   
   .item-quantity span {
@@ -108,5 +113,73 @@
   .remove-btn:hover {
     background-color: #c0392b;
   }
-    
-  
+  /* Container for the product image */
+.product-card img, .cart-item img {
+  width: 140px; /* Makes the image fill the container */
+  max-width: 300px; /* Ensures the image doesn't grow too large */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 8px; /* Optional: Adds rounded corners */
+  object-fit: cover; /* Ensures the image covers the box without stretching */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a soft shadow around the image */
+  transition: transform 0.3s ease; /* Adds smooth zoom effect */
+}
+
+/* On hover, slightly zoom the image */
+.product-card img:hover, .cart-item img:hover {
+  transform: scale(1.05); /* Zooms the image */
+}
+
+/* Styling the image placeholder in case the image fails */
+.product-card img:empty, .cart-item img:empty {
+  background-color: #f2f2f2; /* Light gray background */
+  color: #888; /* Placeholder text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Style for the placeholder fallback image (like a "No Image" text or default image) */
+.product-card img[alt="No Image"], .cart-item img[alt="No Image"] {
+  object-fit: contain; /* Ensures the placeholder fits nicely */
+}
+.checkout-btn {
+  background-color: blueviolet; /* Green color for the button */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1px;
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+  background-color: blueviolet; /* Darker green on hover */
+}
+/* Shared Gradient Style */
+.gradient-btn {
+  padding: 15px;
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+}
+
+.gradient-btn:hover {
+  background: linear-gradient(135deg, #0097a7, #00bcd4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 188, 212, 0.5);
+}
+
+
