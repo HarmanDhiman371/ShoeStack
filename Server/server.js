@@ -21,6 +21,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
   }));
   
+  
 app.use("/api/orders", orderRoutes);
 app.use("/api", userRoutes);
 app.use('/api/products', productRoutes);
