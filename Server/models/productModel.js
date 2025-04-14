@@ -21,10 +21,10 @@ class Product {
     });
   }
 
-  static addProduct({ name, brand, sizeOptions, color, gender, price, imageUrl }, callback) {
+  static addProduct({ name, brand, sizeOptions, color, gender, price, imageUrl, category }, callback) {
     db.query(
-      'INSERT INTO products (name, brand, sizeOptions, color, gender, price, imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [name, brand, sizeOptions, color, gender, price, imageUrl],
+      'INSERT INTO products (name, brand, sizeOptions, color, gender, price, imageUrl, category) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [name, brand, sizeOptions, color, gender, price, imageUrl, category],
       (err, results) => {
         if (err) {
           console.error('Error adding product:', err);
@@ -35,10 +35,10 @@ class Product {
     );
   }
 
-  static updateProduct(id, { name, brand, sizeOptions, color, gender, price, imageUrl }, callback) {
+  static updateProduct(id, { name, brand, sizeOptions, color, gender, price, imageUrl, category }, callback) {
     db.query(
-      'UPDATE products SET name=?, brand=?, sizeOptions=?, color=?, gender=?, price=?, imageUrl=? WHERE id=?',
-      [name, brand, sizeOptions, color, gender, price, imageUrl, id],
+      'UPDATE products SET name=?, brand=?, sizeOptions=?, color=?, gender=?, price=?, imageUrl=?, category=? WHERE id=?',
+      [name, brand, sizeOptions, color, gender, price, imageUrl, category, id],
       (err, results) => {
         if (err) {
           console.error('Error updating product:', err);
