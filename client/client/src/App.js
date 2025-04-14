@@ -25,10 +25,12 @@ function App() {
             <Route path="/" element={
               <>
                 <Body />
+               
                 <Footer />
+                
               </>
             } />
-            <Route path="/login" element={<LoginPage />} />
+           <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/cart" element={<CartPage />} />

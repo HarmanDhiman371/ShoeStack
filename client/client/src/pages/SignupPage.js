@@ -39,10 +39,34 @@ const SignupPage = () => {
     <div className="signup-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-        <input type="password" name="pass" placeholder="Password" value={form.pass} onChange={handleChange} required />
-        <button type="submit">Sign Up</button>
+        <input 
+          className="signup-input"
+          type="text" 
+          name="name" 
+          placeholder="Name" 
+          value={form.name} 
+          onChange={handleChange} 
+          required 
+        />
+        <input 
+          className="signup-input"
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          value={form.email} 
+          onChange={handleChange} 
+          required 
+        />
+        <input 
+          className="signup-input"
+          type="password" 
+          name="pass" 
+          placeholder="Password" 
+          value={form.pass} 
+          onChange={handleChange} 
+          required 
+        />
+        <button className="signup-button" type="submit">Sign Up</button>
       </form>
       {message && <div className={`notification ${isError ? "error" : ""}`}>{message}</div>}
       <div className="toggle"><a href="/login">Already have an account? Login</a></div>

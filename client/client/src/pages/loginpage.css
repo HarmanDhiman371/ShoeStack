@@ -1,4 +1,4 @@
-/* Adjust the container to make it lower */
+/* General Container */
 .login-container {
   max-width: 400px;
   margin: 100px auto 20px; /* Increased top margin to 100px */
@@ -9,8 +9,21 @@
   font-family: Arial, sans-serif;
 }
 
+/* Title */
+.login-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Input fields */
-input {
+.login-input {
   width: 100%;
   padding: 8px;
   margin: 5px 0;
@@ -20,13 +33,13 @@ input {
 }
 
 /* Focused input styles */
-input:focus {
+.login-input:focus {
   border-color: #007BFF;
   outline: none;
 }
 
 /* Button styles */
-button {
+.login-button {
   width: 100%;
   padding: 10px;
   background-color: #007BFF;
@@ -39,7 +52,7 @@ button {
 }
 
 /* Button hover effect */
-button:hover {
+.login-button:hover {
   background-color: #0056b3;
 }
 
@@ -73,12 +86,12 @@ button:hover {
   font-size: 0.9rem;
 }
 
-.toggle a {
+.toggle-link {
   color: #007BFF;
   text-decoration: none;
   font-weight: bold;
 }
 
-.toggle a:hover {
+.toggle-link:hover {
   text-decoration: underline;
 }
