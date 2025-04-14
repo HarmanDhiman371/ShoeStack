@@ -9,6 +9,8 @@ import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
 import CheckoutPage from "./components/CheckoutPage";
 import LoginPage from "./pages/loginpage"; 
+import SignupPage from './pages/SignupPage';
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
               </>
             } />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />

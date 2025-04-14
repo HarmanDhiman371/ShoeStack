@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './loginpage.css';
+import './SignupPage.css';
 
-const LoginPage = () => {
-  const [form, setForm] = useState({ email: "", pass: "" });
+const SignupPage = () => {
+  const [form, setForm] = useState({ name: "", email: "", pass: "" });
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
@@ -13,13 +13,13 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      const data = await res.text(); // Using .text() because your server might return plain text
 
       if (!res.ok) {
         setIsError(true);
@@ -27,10 +27,8 @@ const LoginPage = () => {
         return;
       }
 
-      localStorage.setItem("authToken", data.token);
       setIsError(false);
-      setMessage("Login successful!");
-      setTimeout(() => (window.location.href = "/products"), 1500);
+      setMessage("Signup successful! Please login.");
     } catch (err) {
       setIsError(true);
       setMessage("Failed to connect to backend.");
@@ -38,17 +36,18 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="signup-container">
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
         <input type="password" name="pass" placeholder="Password" value={form.pass} onChange={handleChange} required />
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
       {message && <div className={`notification ${isError ? "error" : ""}`}>{message}</div>}
-      <div className="toggle"><a href="/signup">Don't have an account? Sign Up</a></div>
+      <div className="toggle"><a href="/login">Already have an account? Login</a></div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;
