@@ -7,10 +7,8 @@ import CartPage from "./components/Cart";
 import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
-
+import CheckoutPage from "./components/CheckoutPage";
 import LoginPage from "./pages/loginpage"; 
-=======
-
 
 function App() {
   return (
@@ -19,19 +17,19 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/login" element={<LoginPage />} /> {/* Login route */}
+            <Route path="/" element={
+              <>
+                <Body />
+                <Footer />
+              </>
+            } />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/payment" element={<PaymentForm />} />
           </Routes>
-</main>
-        
-
-  
-
-        <Body />
-        <Footer/>
-
+        </main>
       </Router>
     </CartProvider>
   );

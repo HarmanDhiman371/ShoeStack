@@ -523,7 +523,7 @@ body {
   }
   
   .second {
-    background-image: url("C:\Users\HARMANJEET SINGH\OneDrive\Desktop\personal-project1\client\client\public\images\image.png");
+    background-image: url("/public/images/image.png");
     background-size: cover;
     width: 50%;
     height: 100%;
