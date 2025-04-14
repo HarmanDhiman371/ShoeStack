@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../styles/Body.css';
-
+import ShoeCustomizer from '../components/ShoeCustomizer';
 const Body = () => {
   useEffect(() => {
     const shoeContainer = document.querySelector('.shoe-container');
@@ -79,7 +79,7 @@ const Body = () => {
           <span>Scroll Down</span>
         </div>
       </section>
-
+      <ShoeCustomizer />
       <section className="category-section">
         <h1 className="category-title">OUR PRODUCT CATEGORY</h1>
         <p className="category-description">

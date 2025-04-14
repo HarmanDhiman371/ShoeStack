@@ -30,7 +30,7 @@ const Navbar = () => {
           </li>
 
           {/* Conditionally render Login/Signup or Profile and Logout */}
-          {!isLoggedIn ? (
+          {/* {!isLoggedIn ? (
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/signup">Signup</Link></li>
@@ -40,7 +40,7 @@ const Navbar = () => {
               <li><Link to="/profile"><FaUser /> Profile</Link></li>
               <li><Link to="/logout">Logout</Link></li>
             </>
-          )}
+          )} */}
         </ul>
         <button className="navbar-btn">Get Started</button>
       </div>

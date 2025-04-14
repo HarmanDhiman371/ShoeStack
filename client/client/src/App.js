@@ -8,8 +8,11 @@ import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
 import CheckoutPage from "./components/CheckoutPage";
+
 import LoginPage from "./pages/loginpage"; 
 import SignupPage from './pages/SignupPage';
+
+
 
 
 function App() {
