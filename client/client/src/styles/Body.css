@@ -444,6 +444,7 @@ body {
     }
   
     .shoe-image {
+      display: none;
       width: 100%;
       max-width: 500px;
       height: auto;
@@ -699,6 +700,9 @@ body {
     }
     .inner {
       width: 90%;
+    }
+    .category-section{
+      display: none;
     }
   }
   .section-wrapper:hover .section-title {
