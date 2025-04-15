@@ -8,6 +8,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({
     brand: [],
+    category: [],
     gender: [],
     size: [],
     color: [],
@@ -21,10 +22,12 @@ const ProductsPage = () => {
 
   const filteredProducts = products.filter(product => {
     const brandMatch = filters.brand.length === 0 || filters.brand.includes(product.brand);
+    const categoryMatch = filters.category.length === 0 || filters.category.includes(product.category);
     const genderMatch = filters.gender.length === 0 || filters.gender.includes(product.gender);
     const sizeMatch = filters.size.length === 0 || product.sizeOptions.split(',').some(size => filters.size.includes(size.trim()));
     const colorMatch = filters.color.length === 0 || filters.color.includes(product.color);
-    return brandMatch && genderMatch && sizeMatch && colorMatch;
+    return brandMatch && categoryMatch && genderMatch && sizeMatch && colorMatch;
+
   });
 
   const handleFilterChange = (category, value) => {
@@ -42,7 +45,7 @@ const ProductsPage = () => {
   };
 
   const handleClearFilters = () => {
-    setFilters({ brand: [], gender: [], size: [], color: [] });
+    setFilters({ brand: [], category: [], gender: [], size: [], color: [] });
   };
 
   return (
@@ -52,13 +55,26 @@ const ProductsPage = () => {
 
         <div>
           <strong>Brand</strong><br />
-          {["Nike", "Puma", "Adidas", "Skechers", "Reebok"].map(brand => (
+          {["Nike", "Puma", "Adidas", "Skechers", "Reebok", "Flying Hawk", "Clark", "Tommy Hilfiger", "Hush Puppies"].map(brand => (
             <label key={brand}>
               <input
                 type="checkbox"
                 checked={filters.brand.includes(brand)}
                 onChange={() => handleFilterChange('brand', brand)}
               /> {brand}
+            </label>
+          ))}
+        </div>
+
+        <div>
+          <strong>Category</strong><br />
+          {["Sneakers", "Sports Shoes", "Formal", "Loafers"].map(category => (
+            <label key={category}>
+              <input
+                type="checkbox"
+                checked={filters.category.includes(category)}
+                onChange={() => handleFilterChange('category', category)}
+              /> {category}
             </label>
           ))}
         </div>
@@ -90,13 +106,13 @@ const ProductsPage = () => {
           <strong>Color</strong><br />
           <select onChange={(e) => handleDropdownChange('color', e.target.value)}>
             <option value="">All Colors</option>
-            {["Black", "White", "Red", "Blue", "Green", "Cream"].map(color => (
+            {["Black", "White", "Brown", "Blue", "Tan", "Cream", "Pink"].map(color => (
               <option key={color} value={color}>{color}</option>
             ))}
           </select>
         </div>
 
-        <button onClick={handleClearFilters}>Clear All Filters</button>
+        <button className="clear" onClick={handleClearFilters}>Clear All Filters</button>
       </aside>
 
       <main className="product-section">
