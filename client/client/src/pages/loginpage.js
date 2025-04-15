@@ -23,7 +23,7 @@ const LoginPage = () => {
 
       if (!res.ok) {
         setIsError(true);
-        setMessage(data || "Something went wrong.");
+        setMessage(data?.message || "Something went wrong.");
         return;
       }
 
@@ -38,31 +38,43 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input 
-          className="login-input"
-          type="email" 
-          name="email" 
-          placeholder="Email" 
-          value={form.email} 
-          onChange={handleChange} 
-          required 
-        />
-        <input 
-          className="login-input"
-          type="password" 
-          name="pass" 
-          placeholder="Password" 
-          value={form.pass} 
-          onChange={handleChange} 
-          required 
-        />
-        <button className="login-button" type="submit">Login</button>
-      </form>
-      {message && <div className={`notification ${isError ? "error" : ""}`}>{message}</div>}
-      <div className="toggle"><a className="toggle-link" href="/signup">Don't have an account? Sign Up</a></div>
+    <div className="login-page">
+      <div className="login-container">
+        <h2 className="login-title">Login</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input 
+            className="login-input"
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            value={form.email} 
+            onChange={handleChange} 
+            required 
+          />
+          <input 
+            className="login-input"
+            type="password" 
+            name="pass" 
+            placeholder="Password" 
+            value={form.pass} 
+            onChange={handleChange} 
+            required 
+          />
+          <button className="login-button" type="submit">Login</button>
+        </form>
+
+        {message && (
+          <div className={`notification ${isError ? "error" : "success"}`}>
+            {message}
+          </div>
+        )}
+
+        <div className="toggle">
+          <a className="toggle-link" href="/signup">
+            Don't have an account? Sign Up
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
