@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import styled from "styled-components";
 import { useCart } from "./CartContext"; // Make sure the path is correct
@@ -8,6 +9,12 @@ import './Navbar.css';
 const Navbar = () => {
   const { cartItems } = useCart();
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const navigate = useNavigate(); // Initialize navigate function
+
+  const handleGetStarted = () => {
+    navigate('/login'); // Navigate to the login page
+    // Alternatively, use navigate('/signup') to go to the signup page
+  };
 
   // For conditional rendering, you would likely want to check if the user is logged in
   const isLoggedIn = localStorage.getItem('token');  // Check if JWT token exists in localStorage
@@ -42,7 +49,7 @@ const Navbar = () => {
             </>
           )} */}
         </ul>
-        <button className="navbar-btn">Get Started</button>
+        <button className="navbar-btn" onClick={handleGetStarted}>Get Started</button>
       </div>
     </nav>
   );
