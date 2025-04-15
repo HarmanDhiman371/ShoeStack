@@ -29,6 +29,7 @@ const SignupPage = () => {
 
       setIsError(false);
       setMessage("Signup successful! Please login.");
+      setTimeout(() => (window.location.href = "/login"), 2000); // Redirect after success
     } catch (err) {
       setIsError(true);
       setMessage("Failed to connect to backend.");
@@ -36,40 +37,42 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          className="signup-input"
-          type="text" 
-          name="name" 
-          placeholder="Name" 
-          value={form.name} 
-          onChange={handleChange} 
-          required 
-        />
-        <input 
-          className="signup-input"
-          type="email" 
-          name="email" 
-          placeholder="Email" 
-          value={form.email} 
-          onChange={handleChange} 
-          required 
-        />
-        <input 
-          className="signup-input"
-          type="password" 
-          name="pass" 
-          placeholder="Password" 
-          value={form.pass} 
-          onChange={handleChange} 
-          required 
-        />
-        <button className="signup-button" type="submit">Sign Up</button>
-      </form>
-      {message && <div className={`notification ${isError ? "error" : ""}`}>{message}</div>}
-      <div className="toggle"><a href="/login">Already have an account? Login</a></div>
+    <div className="signup-page">
+      <div className="signup-container">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="signup-input"
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="signup-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="signup-input"
+            type="password"
+            name="pass"
+            placeholder="Password"
+            value={form.pass}
+            onChange={handleChange}
+            required
+          />
+          <button className="signup-button" type="submit">Sign Up</button>
+        </form>
+        {message && <div className={`notification ${isError ? "error" : "success"}`}>{message}</div>}
+        <div className="toggle"><a href="/login">Already have an account? Login</a></div>
+      </div>
     </div>
   );
 };
