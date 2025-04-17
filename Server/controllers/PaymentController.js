@@ -2,7 +2,7 @@ const stripe = require('../config/stripe');
 const createPaymentIntent = async (req, res) => {
   const { amount, currency, Name } = req.body;
 
-  if (!amount || isNaN(amount) || amount <= 0) {
+  if (!amount  || amount <= 0) {
     return res.status(400).json({ error: "Invalid amount. Must be a positive number." });
   }
   if (!currency) {
@@ -11,7 +11,7 @@ const createPaymentIntent = async (req, res) => {
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), // Convert dollars to cents
+      amount: Math.round(amount * 100),
       currency,
       payment_method_types: ['card'],
     });
