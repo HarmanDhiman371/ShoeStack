@@ -21,7 +21,7 @@ exports.signupUser = (req, res) => {
       const hashedPassword = await bcrypt.hash(pass, 10);
       User.create(name, email, hashedPassword, (err, result) => {
         if (err) {
-          console.error("MySQL Insert Error:", err);  // 👈 Add this
+          console.error("MySQL Insert Error:", err);  
           return res.status(500).send("Error registering user.");
         }
         res.status(201).send("User registered successfully!");
