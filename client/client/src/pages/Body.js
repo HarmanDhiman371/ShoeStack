@@ -33,15 +33,8 @@ const Body = () => {
       image: "/images/puma-1.png",
       colors: ['#ff416c', '#ff4b2b'],
       features: ["Rider foam", "Rubber outsole", "Vintage design"]
-    },
-    {
-      id: 4,
-      name: "New Balance 990v5",
-      price: "$174.99",
-      image: "/images/shoe-transparent-4.png",
-      colors: ['#0f2027', '#2c5364'],
-      features: ["ENCAP midsole", "Pigskin lining", "Made in USA"]
     }
+
   ];
 
   // Handle slide change

@@ -12,7 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate(); // Initialize navigate function
 
   const handleGetStarted = () => {
-    navigate('/login'); // Navigate to the login page
+    navigate('/signup'); // Navigate to the login page
     // Alternatively, use navigate('/signup') to go to the signup page
   };
 

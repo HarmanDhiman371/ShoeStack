@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
+import { toast } from 'react-toastify';
+
 import "../styles/ProductList.css";
 
 const ProductList = ({ products }) => {
@@ -15,31 +17,30 @@ const ProductList = ({ products }) => {
   };
 
   const handleBuyConfirm = () => {
-    if (!selectedSize) {
-      alert("Please select a size.");
-      return;
-    }
+  if (!selectedSize) {
+    toast.error("Please select a size.");
+    return;
+  }
 
-    // You can send this data to your backend or cart logic
-    console.log("Purchasing:", {
-      product: selectedProduct.name,
-      size: selectedSize,
-      quantity
-    });
-
-    const productToAdd = {
-      id: selectedProduct.id,
-      product: selectedProduct.name,
-      size: selectedSize,
-      quantity,
-      price: selectedProduct.price, 
-      imageUrl: selectedProduct.imageUrl,
-    };
-    addToCart(productToAdd);
-
-    // Reset selection
-    setSelectedProduct(null);
+  const productToAdd = {
+    id: selectedProduct.id,
+    product: selectedProduct.name,
+    size: selectedSize,
+    quantity,
+    price: selectedProduct.price, 
+    imageUrl: selectedProduct.imageUrl,
   };
+
+  // Call addToCart and check if product was added successfully
+  const addedSuccessfully = addToCart(productToAdd, quantity);
+
+  if (addedSuccessfully) {
+    toast.success(`${selectedProduct.name} (Size: ${selectedSize}) added to cart!`);
+    setSelectedProduct(null);
+  }
+  // If not added, assume addToCart already showed error toast about limit
+};
+
 
   return (
     <div className="product-grid">

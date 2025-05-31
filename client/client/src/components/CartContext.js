@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-
+import { toast } from 'react-toastify';
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
@@ -16,20 +16,35 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product) => {
-    const existing = cartItems.find((item) => item.id === product.id);
-    if (existing) {
-      setCartItems((prev) =>
-        prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+  const addToCart = (product, quantity = 1) => {
+  const existing = cartItems.find(
+    (item) => item.id === product.id && item.size === product.size
+  );
+
+  if (existing) {
+    if (existing.quantity + quantity > 15) {
+      toast.error("You cannot add more than 15 of the same item.");
+      return false;
     }
-  };
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id === product.id && item.size === product.size
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      )
+    );
+  } else {
+    if (quantity > 15) {
+      toast.error("You cannot add more than 15 of the same item.");
+      return false;
+    }
+    setCartItems([...cartItems, { ...product, quantity }]);
+    return true;
+  }
+};
+
+
+
 
   const updateQuantity = (id, type) => {
     setCartItems((prev) =>

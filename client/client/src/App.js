@@ -11,6 +11,8 @@ import CheckoutPage from "./components/CheckoutPage";
 
 import LoginPage from "./pages/loginpage"; 
 import SignupPage from './pages/SignupPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -20,6 +22,18 @@ function App() {
     <CartProvider>
       <Router>
         <Navbar />
+        <ToastContainer 
+          position="top-right" 
+          autoClose={5000} 
+          theme="dark" 
+          hideProgressBar={false} 
+          newestOnTop={false} 
+          closeOnClick 
+          rtl={false} 
+          pauseOnFocusLoss 
+          draggable 
+          pauseOnHover
+        />
         <main>
           <Routes>
             <Route path="/" element={
@@ -36,6 +50,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/payment" element={<PaymentForm />} />
+            
           </Routes>
         </main>
       </Router>
