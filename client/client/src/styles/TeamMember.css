@@ -1,0 +1,50 @@
+.team-member {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.member-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.member-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.member-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #2b2b2b;
+}
+
+.member-info p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.member-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.member-social a {
+  color: #666;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.member-social a:hover {
+  color: #6e00ff;
+}

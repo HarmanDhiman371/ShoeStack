@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
-import "./Navbar.css";
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
+
+  const navigate = useNavigate(); // Hook added to handle programmatic navigation
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -53,7 +55,13 @@ const Navbar = () => {
           </ul>
 
           <div className="nav-actions">
-            <button className="btn-get-started" onClick={() => handleLinkClick("get-started")}>
+            <button
+              className="btn-get-started"
+              onClick={() => {
+                handleLinkClick("get-started");
+                navigate("/signup"); // Navigate to /signup on click
+              }}
+            >
               Get Started <FiArrowRight className="btn-icon" />
             </button>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ShoeCustomizer.css';
+import '../styles/ShoeCustomizer.css';
 
 const ShoeCustomizer = () => {
   const [colors, setColors] = useState({

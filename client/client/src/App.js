@@ -8,7 +8,7 @@ import ProductsPage from "./components/ProductsPage";
 import { CartProvider } from './components/CartContext';
 import Body from "./pages/Body";
 import CheckoutPage from "./components/CheckoutPage";
-
+import About from "./pages/About";
 import LoginPage from "./pages/loginpage"; 
 import SignupPage from './pages/SignupPage';
 import { ToastContainer } from 'react-toastify';
@@ -50,6 +50,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/payment" element={<PaymentForm />} />
+            <Route path="/about" element={<About />} />
             
           </Routes>
         </main>
