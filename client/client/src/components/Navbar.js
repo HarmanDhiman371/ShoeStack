@@ -1,74 +1,70 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
-import { useCart } from "./CartContext";
-import './Navbar.css';
+import { Link } from "react-router-dom";
+import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const { cartItems } = useCart();
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    document.body.style.overflow = isMobileMenuOpen ? 'auto' : 'hidden';
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+    setMobileOpen(false);
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    document.body.style.overflow = 'auto';
-  };
+  const navItems = [
+    { path: "/", name: "Home", id: "home" },
+    { path: "/products", name: "Products", id: "products" },
+    { path: "/accessories", name: "Accessories", id: "accessories" },
+    { path: "/about", name: "About Us", id: "about" },
+  ];
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <div className="navbar-brand" onClick={() => navigate('/')}>
-          <span className="logo-primary">Shoe</span>
-          <span className="logo-secondary">Stack</span>
+    <nav className={`navbar ${scrolled ? "scrolled" : ""} ${mobileOpen ? "mobile-open" : ""}`}>
+      <div className="nav-container">
+        <div className="nav-logo">
+          <Link to="/" onClick={() => handleLinkClick("home")}>
+            <span className="logo-text">ShoeStack</span>
+            <span className="logo-dot"></span>
+          </Link>
         </div>
 
-        <div className={`navbar-links ${isMobileMenuOpen ? "active" : ""}`}>
-          <ul className="nav-menu">
-            <li>
-              <Link to="/" className="nav-link" onClick={closeMobileMenu}>Home</Link>
-            </li>
-            <li>
-              <Link to="/products" className="nav-link" onClick={closeMobileMenu}>Products</Link>
-            </li>
-            <li>
-              <Link to="/accessories" className="nav-link" onClick={closeMobileMenu}>Accessories</Link>
-            </li>
-            <li>
-              <Link to="/about" className="nav-link" onClick={closeMobileMenu}>About</Link>
-            </li>
-            <li className="nav-cart">
-              <Link to="/cart" className="nav-link" onClick={closeMobileMenu}>
-                <FaShoppingCart />
-                {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
-              </Link>
-            </li>
+        <div className="nav-links-container">
+          <ul className="nav-links">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <Link
+                  to={item.path}
+                  className={`nav-link ${activeLink === item.id ? "active" : ""}`}
+                  onClick={() => handleLinkClick(item.id)}
+                >
+                  {item.name}
+                  <span className="link-underline"></span>
+                </Link>
+              </li>
+            ))}
           </ul>
-          <button className="nav-button" onClick={() => { navigate('/signup'); closeMobileMenu(); }}>
-            Get Started
-          </button>
+
+          <div className="nav-actions">
+            <button className="btn-get-started" onClick={() => handleLinkClick("get-started")}>
+              Get Started <FiArrowRight className="btn-icon" />
+            </button>
+          </div>
         </div>
 
-        <button 
-          className="mobile-toggle" 
-          onClick={toggleMobileMenu}
-          aria-label="Toggle navigation"
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
     </nav>
